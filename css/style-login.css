@@ -1,0 +1,57 @@
+a {
+    margin: 20px;
+    outline: none;
+    text-decoration: none;
+  }
+
+.custom-btn {
+    padding: 10px 25px;
+    border: 2px solid #000;
+    font-family: 'Lato', sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 220px;
+
+  }
+
+.btn {
+    background: #000;
+   color: #fff;
+   z-index: 1;
+ }
+ .btn:after {
+   position: absolute;
+   content: "";
+   width: 0;
+   height: 100%;
+   top: 0;
+   right: 0;
+   z-index: -1;
+    background: #e0e5ec;
+   transition: all 0.3s ease;
+ }
+ .btn:hover {
+   color: #000;
+ }
+ .btn:hover:after {
+   left: 0;
+   width: 100%;
+ }
+ .btn:active {
+   top: 2px;
+ }
+
+ .form {
+   color: white;
+   display: grid;
+   place-items: center;
+ }
+
+ .form h2 {
+   color: #f41213;
+ }
