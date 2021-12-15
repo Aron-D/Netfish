@@ -21,4 +21,6 @@ foreach($data as $key=> $row): ?>
 <?php
 endforeach;
 
-include_once "footer.html"; }?>
+}
+
+ 

@@ -40,12 +40,27 @@ if(isset($_POST['submit'])) {
     $account = $db->prepare("SELECT * FROM user WHERE email = '".$_POST['email']."'");
     $account->execute();
     $data = $account->fetch(PDO::FETCH_ASSOC);
+
+    $_SESSION['email'] = $data['email'];
     
     if($data >= 1){
-        echo "<div class='text'>gelukt! maar niet echt</div>";
+        echo "<div class='txt'><form action='' method='post'><input type='text' name='pass' placeholder='Please type new passw' required>
+        <input type='submit' name='change' value='Aanpassen'></div>";
     }else {
-        echo "<div class='text'>uw email is niet geldig in ons systeem. Registreer<a href='register.php'>hier</a></div>";
+        echo "<div class='txt'>uw email is niet geldig in ons systeem. Registreer<a href='register.php'>hier</a></div>";
     }
     }
+
+if(isset($_POST['change'])) {
+
+    $edit = $db->prepare("UPDATE user SET password = :pw WHERE email = :em");
+    $edit->execute([
+        ':pw' => hash('md5', $_POST['pass']),
+        ':em' => $_SESSION['email']
+]);
+
+    echo "<div class='txt'>Uw wachtwoord is met succes aangepast! log <a href='login.php'>hier</a> opnieuw in.</div>";
+    session_destroy();
+}
 
 include_once "footer.html"; ?>

@@ -7,20 +7,20 @@
     width: 150px;
 }
 
-* {box-sizing: border-box;}
+* {
+   box-sizing: border-box;
+   /* color: white; */
+  }
 
 body { 
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
   background-color: #000000;
-  /* background-image: url("https://wpassets.brainstation.io/app/uploads/2017/04/13100509/Netflix-Background.jpg");
-  height: 200px;
-  z-index: -1; */
+  /* overflow: hidden; */
 }
 
 .background {
   z-index: -1;
-  width: auto;
   position: absolute;
   top: 0%;
   opacity: 0.4;
@@ -81,10 +81,6 @@ a.logo:hover {
   }
 }
 
-.text {
-    color: white;
-}
-
 .content {
   color: white;
   position: absolute;
@@ -92,3 +88,50 @@ a.logo:hover {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+.main-container {
+  padding: 50px;
+}
+
+.location {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: repeat(6, minmax(100px, 1fr));
+}
+
+.location a {
+  transition: transform .3s;  
+}
+
+.location a:hover {
+  transition: transform .3s;
+  -ms-transform: scale(1.1);
+  -webkit-transform: scale(1.1);  
+  transform: scale(1.1);
+}
+
+.location img {
+  border-radius: 2px;
+  width: 289px;
+}
+
+.txt {
+  color: white;
+  width: 20%;
+  background-color: grey;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+}
+
+.txthome {
+  color: white;
+}
+
+/* .box {
+  display: flex;
+  flex-direction: row;
+} */
+
