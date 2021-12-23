@@ -135,3 +135,54 @@ a.logo:hover {
   flex-direction: row;
 } */
 
+.middle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+}
+
+hr {
+  margin: auto;
+  width: 40%;
+  color: white;
+}
+
+.title {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 50px;
+    color: rgb(221, 124, 124);
+}
+
+/* iframe {
+  position: absolute;
+  float: left;
+  top: 31%;
+  left: 6%;
+} */
+
+/* .desc { */
+  /* position: relative;
+  width: 500px;
+  float: right;
+  right: 7%;
+  top: 31%; */
+  /* color: rgb(218, 209, 209);
+}
+
+.year {
+  color: white;
+} */
+
+.flexcont {
+  display: flex;
+}
+
+.flexcont > div {
+  margin: 20px;
+  padding: 50px;
+  color: white;
+}
