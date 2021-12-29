@@ -14,7 +14,7 @@ if(empty($_SESSION['user'])): ?>
         <section class="main-container" >
         <h1 class="txthome">Mijn lijst</h1>
       <div class="box">
-
+        <?php readfav($_SESSION['user']);?>
       </div>
 
         <h1 class="txthome">New on Netflix</h1>
