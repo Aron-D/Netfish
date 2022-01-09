@@ -52,13 +52,24 @@ include_once "database/connect.php";
 
         foreach($data as $key => $row) {
 
-            $a = "<div class='location'>
+            $b  = "<h1 class='txthome'>Mijn lijst</h1>";
+            $b .= "<div class='box'>";
+            $b .= "<div class='location'>
             <a href='about.php?id=".$row['movie_id']."''>
             <img src='".$row['image']."'>
             </a>";
-            $a .= "</div>";
-            echo $a;
+            $b .= "</div><form method='post' action=''><input class='bn3637 bn38' type='submit' name='submit' value='verwijder uit lijst'></form>";
+            $b .= "</div>";
+            echo $b;
+        
+
+        if(isset($_POST['submit'])) {
+
+            $sql = $db->prepare("DELETE FROM favorites WHERE movie_id = ".$row['movie_id']."");
+            $sql->execute();
+            return;
         }
+    }
     }
 
     // function addwish($idWish) {
@@ -77,4 +88,47 @@ include_once "database/connect.php";
     //       }
     // }
 // }
+
+
+
+        function add() {
+
+            global $db;
+
+            $c  = "<div class='middle'>";
+            $c .= "<div class='title'>Film/Serie toevoegen</div><br><br>";
+            $c .= "<form method='post' action=''>";
+            $c .= "<label>Titel movie/serie:</label> <input type='text' name='title'><br><br>";
+            $c .= "<label>Selecteer categorie: </label><select name='cat'>
+                    <option value='' selected>--- Kies een genre ---</option>
+                    <option value='new'>New on Netfish</option>
+                    <option value='original'>Netfish Originals</option>
+                    <option value='action'>Action & Adventure</option>
+                    <option value='scifi'>Science Fiction</option>
+                    <option value='comedy'>Comedy</option>
+                    <option value='horror'>Horror</option>
+                    </select><br><br>";
+            $c .= "<label>URL voorbladfoto van uw movie/serie: </label><input type='text' name='img'><br><br>";
+            $c .= "<label>URL trailerfilm/serie: </label><input type='txt' name='url' placeholder='https://www.youtube.com/watch?v=voK-qANQGhE'><br><br>";
+            $c .= "<label>Jaar publicatie film/serie: </label><input type='text' name='yr'><br><br>";
+            $c .= "<label>Korte omschrijving van film/serie: </label><input type='text' name='desc'><br><br>";
+            $c .= "<input class='bn3638 bn39' type='submit' name='submit' value='Publiceren'>";
+
+            echo $c;
+
+            if(isset($_POST['submit'])) {
+
+            $sql = $db->prepare("INSERT INTO movie (title, category,  image, url, year, description) 
+                                 VALUES (:ti, :cy, :ig, :ul, :yr, :dn)");
+            $sql->execute([
+                ':ti' => $_POST['title'],
+                ':cy' => $_POST['cat'],
+                ':ig' => $_POST['img'],
+                ':ul' => $_POST['url'],
+                ':yr' => $_POST['yr'],
+                ':dn' => $_POST['desc']]);
+        
+                header("location:index.php");
+            }
+    }
 ?>

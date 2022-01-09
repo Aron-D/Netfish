@@ -187,6 +187,17 @@ hr {
   color: white;
 }
 
+.flexcont_beheer {
+  display: flex;
+  padding: 54px;
+}
+
+.flexcont_beheer > div {
+  margin: 20px;
+  padding: 50px;
+  color: white;
+}
+
 .bn3637 {
   display: inline-flex;
   align-items: center;
@@ -210,3 +221,36 @@ hr {
 .bn38:hover {
   background-color: #f41213;
 }
+
+.fas fa-times {
+  color: red;
+}
+
+.bn3638 {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.7rem 2rem;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  text-align: center;
+  text-decoration: none;
+  color: black;
+  backface-visibility: hidden;
+  border: 0.3rem solid transparent;
+  border-radius: 3rem;
+  background-color: white;
+}
+.bn39 {
+  border-color: transparent;
+  transition: background-color 0.3s ease-in-out;
+}
+  
+.bn39:hover {
+  background-color: #f41213;
+}
+
+/* .addform {
+
+} */

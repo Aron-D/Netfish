@@ -23,7 +23,7 @@ include_once "database/connect.php";
 <form action="" method="post">
 
     <label>Uw email</label>
-    <input type="text" name="email" required>
+    <input type="mail" name="email" required>
 
     <input type="submit" value="volgende" name="submit">
 
