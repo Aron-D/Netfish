@@ -131,4 +131,12 @@ include_once "database/connect.php";
                 header("location:index.php");
             }
     }
+
+    function delete() {
+
+        global $db;
+
+
+        
+    }
 ?>

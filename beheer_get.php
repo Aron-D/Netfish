@@ -9,7 +9,11 @@ if(isset($_GET['add'])){
 add();
     
 }
-if(isset($_GET['del'])){}
+if(isset($_GET['del'])){
+
+    delete();
+    
+}
 if(isset($_GET['adj'])){}
 
 ?>

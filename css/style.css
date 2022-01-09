@@ -251,6 +251,40 @@ hr {
   background-color: #f41213;
 }
 
-/* .addform {
+.read .create-contact {
+  display: inline-block;
+  text-decoration: none;
+  background-color: #38b673;
+  font-weight: bold;
+  font-size: 14px;
+  color: #FFFFFF;
+  padding: 10px 15px;
+  margin: 15px 0;
+}
+.read .create-contact:hover {
+  background-color: #32a367;
+}
 
-} */
+.read table tbody tr td.actions .edit, .read table tbody tr td.actions .trash {
+  display: inline-flex;
+  text-align: right;
+  text-decoration: none;
+  color: #FFFFFF;
+  padding: 10px 12px;
+}
+.read table tbody tr td.actions .trash {
+  background-color: #b73737;
+}
+.read table tbody tr td.actions .trash:hover {
+  background-color: #a33131;
+}
+.read table tbody tr td.actions .edit {
+  background-color: #37afb7;
+}
+.read table tbody tr td.actions .edit:hover {
+  background-color: #319ca3;
+}
+
+table {
+  border: 2px solid white;
+}
