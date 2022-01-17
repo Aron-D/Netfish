@@ -72,6 +72,17 @@ include_once "database/connect.php";
     }
     }
 
+    function dell($id) {
+
+    global $db;
+
+    $sql = $db->prepare("DELETE FROM movie WHERE id = ".$id."");
+        $sql->execute();
+        
+        return;
+
+        header("location:beheer.php");
+    }
     // function addwish($idWish) {
 
     //     global $db;

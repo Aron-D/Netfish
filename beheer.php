@@ -21,7 +21,7 @@ $data = $sql->fetchAll();
 
     <div class="content read">
 	<h2>Beheer pagina</h2>
-	<a href="beheer_get.php?add" class="create-contact">Film/Serie toevoegen</a>
+	<a href="beheer_get.php?action=add" class="create-contact">Film/Serie toevoegen</a>
 	<table>
         <thead>
             <tr>
@@ -45,8 +45,8 @@ $data = $sql->fetchAll();
                 <td><?=$data['year']?></td>
                 <td>|</td>
                 <td class="actions">
-                    <a href="beheer_get?id_adj=<?=$data['id']?>" class="edit"><i class="fas fa-pen fa-xs"></i></a>
-                    <a href="beheer_get?id_del=<?=$data['id']?>" class="trash"><i class="fas fa-trash fa-xs"></i></a>
+                    <a href="beheer_get?action=edit&id=<?=$data['id']?>" class="edit"><i class="fas fa-pen fa-xs"></i></a>
+                    <a href="beheer_get?action=delete&id=<?=$data['id']?>" class="trash"><i class="fas fa-trash fa-xs"></i></a>
                 </td>
             </tr>
             <?php endforeach; ?>
