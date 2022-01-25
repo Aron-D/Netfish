@@ -5,12 +5,10 @@ include_once "header.php";
 include_once "function.php";
 
 
-if (isset($_GET['action']) && isset($_GET['id'])) {
+if (isset($_GET['action'])) {
 
-    $_GET['action'] = $action;
-    $_GET['id'] = $id;
 
-switch ($action) {
+switch ($_GET['action']) {
     case 'add':
         
         add();
@@ -21,13 +19,18 @@ switch ($action) {
         
         dell($_GET['id']);
 
+        header("location:beheer.php");
+
             break;
 
     case 'edit':
         
+        edit($_GET['id']);
 
-
-                break;
+        // header("location:beheer.php");
+        
+        return;
+            break;
     
     default:
         exit("<div class='txthome'> it broke?!.</div> <a href='index.php'>Go back...</a>");

@@ -122,7 +122,7 @@ include_once "database/connect.php";
             $c .= "<label>URL voorbladfoto van uw movie/serie: </label><input type='text' name='img'><br><br>";
             $c .= "<label>URL trailerfilm/serie: </label><input type='txt' name='url' placeholder='https://www.youtube.com/watch?v=voK-qANQGhE'><br><br>";
             $c .= "<label>Jaar publicatie film/serie: </label><input type='text' name='yr'><br><br>";
-            $c .= "<label>Korte omschrijving van film/serie: </label><input type='text' name='desc'><br><br>";
+            $c .= "<label>Korte omschrijving van film/serie: </label><textarea name='desc' rows='4' cols='50'></textarea><br><br>";
             $c .= "<input class='bn3638 bn39' type='submit' name='submit' value='Publiceren'>";
 
             echo $c;
@@ -143,11 +143,92 @@ include_once "database/connect.php";
             }
     }
 
-    function delete() {
+    function delete($movid) {
 
         global $db;
 
+        $sql = $db->prepare("DELETE FROM movie WHERE id = ".$movid."");
+        $sql->execute();
 
-        
     }
+
+    function edit($movid) {
+
+        global $db;
+        global $key;
+
+        $sql = $db->prepare("SELECT * FROM movie WHERE id = ".$movid."");
+        $sql->execute();
+        $data = $sql->fetchAll();
+
+        foreach($data as $key => $row) {
+
+        $d  = "<div class='middle'>";
+        $d .= "<div class='title'>Film/Serie Wijzigen</div><br><br>";
+        $d .= "<form method='post' action=''>";
+        $d .= "<label>Titel movie/serie: </label> <input type='text' name='title' value='".$row['title']."'><br><br>";
+        $d .= "<label>Selecteer categorie: |<b>".$row['category']."</b>| </label><select name='cat'>
+               <option value='' selected>--- Kies een genre ---</option>
+               <option value='new'>New on Netfish</option>
+               <option value='original'>Netfish Originals</option>
+               <option value='action'>Action & Adventure</option>
+               <option value='scifi'>Science Fiction</option>
+               <option value='comedy'>Comedy</option>
+               <option value='horror'>Horror</option>
+               </select><br><br>";
+        $d .= "<label>URL voorbladfoto van uw movie/serie: </label><input type='text' name='img' value='".$row['image']."'><br><br>";
+        $d .= "<label>URL trailerfilm/serie: </label><input type='txt' name='url' value='".$row['url']."'><br><br>";
+        $d .= "<label>Jaar publicatie film/serie: </label><input type='text' name='yr' value='".$row['year']."'><br><br>";
+        $d .= "<label>Korte omschrijving van film/serie: </label><textarea name='desc' rows='4' cols='50'>".$row['description']."</textarea><br><br>";
+        $d .= "<input class='bn3638 bn39' type='submit' name='submit' value='Wijzig'>";
+
+        echo $d;
+
+    }
+
+            if(isset($_POST['submit'])) {
+
+                // $sql = $db->prepare("UPDATE movie 
+                // SET title = ".$row['title'].", category = ".$row['category'].", image = ".$row['image'].", 
+                // url = ".$row['url'].", year = ".$row['year'].", description = ".$row['description']."
+                // WHERE id = ".$movid."");
+
+                $sql = $db->prepare("UPDATE movie 
+                SET title = :ti, category = :ca, image = :im, 
+                url = :ul, year = :yr, description = :ds
+                WHERE id = ".$movid."");
+
+                // $sql->bindParam('ti', );
+                // $sql->bindParam('', );
+                // $sql->bindParam('', );
+                // $sql->bindParam('', );
+                // $sql->bindParam('', );
+                // $sql->bindParam('', );
+
+                 $sql->execute([
+                    ':ti' => $row['title'],
+                    ':ca' => $row['category'],
+                    ':im' => $row['image'],
+                    ':ul' => $row['url'],
+                    ':yr' => $row['year'],
+                    ':ds' => $row['description']
+                ]);
+
+                // $sql->execute();
+
+                // header("location:beheer.php");
+
+                // $sql = $db->prepare("UPDATE movie 
+                // SET title = :ti, category = :ca, image = :im, 
+                // url = :ul, year = :yr, description = :ds
+                // WHERE id = ".$movid."");
+
+
+
+            }
+
+    }
+
+
+
 ?>
