@@ -73,8 +73,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `username`, `email`, `password`, `is_admin`) VALUES
-(5, 'mborijnland', 'talibrunner@ctemplar.com', 'f23e00ddd75278a1b7292b94b1ce03d9', 1),
-(6, 'klant', 'aron-dosti@hotmail.com', '0cc175b9c0f1b6a831c399e269772661', 0);
+(6, 'klant', 'test@hotmail.com', 'test', 1);
 
 --
 -- Indexen voor geëxporteerde tabellen
